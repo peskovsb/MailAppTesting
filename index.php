@@ -638,14 +638,14 @@ $(function(){
 				
 				/* DRAWING TABLE func
 				-------------------------------------------*/
-				function drawTable (folder,page,search,loc){
+				function drawTable (folder,page,search,loc,devicetype,countnumb){
 				timeStmp = $('#first-row-drawing').attr('data-timeStmp');
 				
 					$.ajax({
 						dataType: "HTML",
-						data: {page: page,loc: loc},
+						data: {page: page,loc: loc,devtype: devicetype, limit:countnumb},
 						type: "POST",
-						url : "ajax/documents/"+folder+"/ajax/ajax_list.php",
+						url : "ajax/"+folder+"/ajax/ajax_list.php",
 							success : function (data) {
 								//-- HTML data
 								$('#start-tr').after(data).hide();
@@ -655,7 +655,7 @@ $(function(){
 							}
 						});	
 						
-				}				
+				}
 				
 				
 		</script>
@@ -796,6 +796,7 @@ $(function(){
 			<?if($userLevel['oper_view_forw']==1){?><li><a href="javascript:void(0);" id="BoxesSecondBtn">Переадресация</a></li><?}?>-->
 			<!--<li><a href="javascript:void(0);">Транспорт</a></li>-->
 			<?if($_SESSION['user_level'] == '2'){?><li><a id="BoxesDocsBtn" href="javascript:void(0)">Документы</a></li><?}?>
+			<?if($_SESSION['user_level'] == '2'){?><li><a id="BoxesInventBtn" href="javascript:void(0)">Инвентаризация</a></li><?}?>
 			<div class="clearfox"></div>
 		</ul>
 	</div>

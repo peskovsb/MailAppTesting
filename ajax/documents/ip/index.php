@@ -122,35 +122,16 @@ $(document).ready(function(){
 		
 	},2500);*/
 	
-	drawTable('ip','','','1');
+	drawTable('documents/ip','','','1','','');
 
 });
 
 $(document).on('change','#ipLocation',function(){
 	dataLoc = $(this).val();
-	drawTable('ip','','',dataLoc);
+	drawTable('documents/ip','','',dataLoc,'','');
 })
 
-	/* DRAWING TABLE func
-	-------------------------------------------*/
-	function drawTable (folder,page,search,loc){
-	timeStmp = $('#first-row-drawing').attr('data-timeStmp');
-	
-		$.ajax({
-			dataType: "HTML",
-			data: {page: page,loc: loc},
-			type: "POST",
-			url : "../"+folder+"/ajax/ajax_list.php",
-				success : function (data) {
-					//-- HTML data
-					$('#start-tr').after(data).hide();
-					//$('.val').hide();
-					$('.val').fadeIn(400);	
-					$('.val[data-timeStmp="'+timeStmp+'"]').remove();					
-				}
-			});	
-			
-	}
+
 </script>
 
 <select name="takeLoc" id="ipLocation">

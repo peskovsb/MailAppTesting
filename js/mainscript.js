@@ -1392,11 +1392,51 @@ function ClearStartIUlogs(){
 					$('.ajaxcont').html(data);					
 					//$('.ajaxcont').fadeIn(700);
 					//$('#staff_table').html('123');
-					drawTable('ip','','','1');
+					drawTable('documents/ip','','','1','');
 				  }
 			});
 			
 		//},400);	
+	});
+
+	$(document).on('click','#BoxesInventBtn',function(){
+	$('.ajaxcont').html('');
+	$('#innercontainerIU').hide();
+	$('.pagenation-wrapper-IU').hide();
+
+	$('.link-hidden-IU').hide();
+	$('.link-hidden-IU-logs').hide();
+	$('#maiApplication').css({'padding':'0px'});
+	$('#maiApplication').css({'padding-bottom':'50px'});
+	$('.ajaxcont').css({'width':'auto'})
+	//$('#maiApplication').css({'height':'initial'});
+	$('html').css({'min-height':'100%'});
+	$('body').css({'min-height':'100%'});
+	up();
+		//$('.post-server a').removeClass('activeMenu');  // -- here is first-menu-link
+		$('.nav-menu-top li a').removeClass('activeMenu');
+		$(this).addClass('activeMenu');
+		$('.datacont').hide();
+		//$('.ajaxcont').html('');
+		$('.ajaxcont').show();
+
+		//$('.ajaxcont').html('<img src="loading_dark_large.gif" style="margin:50px auto 0;display:block;">');
+			//setTimeout(function(){
+				$.ajax({
+				  url: "ajax/inventarization/show.php",
+				  success: function(data){
+				  //--take major params
+                      TypeSel = $('#devTypeSel').val();
+                      TypeComp = $('#devCompLoc').val();
+					//$('.ajaxcont').hide();
+					$('.ajaxcont').html(data);
+					//$('.ajaxcont').fadeIn(700);
+					//$('#staff_table').html('123');
+					drawTable('inventarization','','',TypeComp,TypeSel,'10');
+				  }
+				});
+
+		//},400);
 	});
 	
 
@@ -1580,6 +1620,62 @@ $(document).on('click','.createIp',function(){
             scrolling   : false,
             padding     : 0,
         href: 'ajax/documents/ip/ajax/form/buid_form_create.php?ip='+dataIp+'&loc='+dataLoc,
+        type: 'ajax'
+    });
+});
+
+$(document).on('click','#newdeviceInv',function(){
+    $.fancybox({
+        //width: 400,
+        maxWidth    : 713,
+            minHeight   : 150,
+            fitToView   : false,
+            autoSize    : true,
+            autoScale   : true,
+            openEffect  : 'none',
+			openSpeed : 1,
+            closeEffect : 'none',
+            scrolling   : false,
+            padding     : 0,
+        href: 'ajax/inventarization/ajax/form/create/buid_form_create.php',
+        type: 'ajax'
+    });
+});
+
+$(document).on('click','.corectInv',function(){
+    dataId = $(this).attr('data-id');
+    $.fancybox({
+        //width: 400,
+        maxWidth    : 713,
+            minHeight   : 150,
+            fitToView   : false,
+            autoSize    : true,
+            autoScale   : true,
+            openEffect  : 'none',
+			openSpeed : 1,
+            closeEffect : 'none',
+            scrolling   : false,
+            padding     : 0,
+        href: 'ajax/inventarization/ajax/form/correct/buid_form.php?id='+dataId,
+        type: 'ajax'
+    });
+});
+
+$(document).on('click','.delInv',function(){
+    dataId = $(this).attr('data-id');
+    $.fancybox({
+        //width: 400,
+        maxWidth    : 713,
+            minHeight   : 150,
+            fitToView   : false,
+            autoSize    : true,
+            autoScale   : true,
+            openEffect  : 'none',
+			openSpeed : 1,
+            closeEffect : 'none',
+            scrolling   : false,
+            padding     : 0,
+        href: 'ajax/inventarization/ajax/form/delete/buid_form.php?id='+dataId,
         type: 'ajax'
     });
 });
@@ -4986,7 +5082,7 @@ function showTabs(param){
 	}
 $(document).on('change','#ipLocation',function(){
 	dataLoc = $(this).val();
-	drawTable('ip','','',dataLoc);
+	drawTable('documents/ip','','',dataLoc,'','');
 	$.ajax({
 		url: "ajax/documents/ip/ajax/ip_subnetwork.php",
 		data: {loc : dataLoc},
@@ -4996,6 +5092,20 @@ $(document).on('change','#ipLocation',function(){
 		}
 	});
 })
+$(document).on('change','#devCompLoc',function(){
+    //--take major params
+    TypeSel = $('#devTypeSel').val();
+    TypeComp = $('#devCompLoc').val();
+//alert(TypeComp)
+    drawTable('inventarization', '', '', TypeComp,TypeSel,'10');
+});
+$(document).on('change','#devTypeSel',function(){
+    //--take major params
+    TypeSel = $('#devTypeSel').val();
+    TypeComp = $('#devCompLoc').val();
+//alert(TypeComp)
+    drawTable('inventarization', '', '', TypeComp,TypeSel,'10');
+});
 $(document).on('submit','#field-add-Ip',function(){
 	dataForm = $(this).serialize();
 	alert(dataForm);
@@ -5051,3 +5161,10 @@ function showMoreMails (){
 		$('#place-for-new-adres-stf').html(mail1);
 	}
 }
+//$(document).on('change','.staff_sel-page-wrap-opt',function(){
+    //--take major params
+    //TypeSel = $('#devTypeSel').val();
+    //TypeComp = $('#devCompSel').val();
+//alert(TypeComp)
+    //drawTable('inventarization', '', '', TypeComp,'','');
+//});

@@ -24,7 +24,7 @@
 						success: function (data) {
 							$('#info-tbl').remove();
 							dataLoc = $('#ipLocation').val();
-							drawTable('ip', '', '', dataLoc);
+							drawTable('documents/ip', '', '', dataLoc,'','');
 							$('.lastrow-tbl').before('<tr id="info-tbl"><td colspan="2"><div style="background: #090;color: #fff;padding: 5px;-webkit-border-radius: 4px;-moz-border-radius: 4px;border-radius: 4px;margin: 5px 0 0 0;margin-top: 7px;width:311px;">Изменения внесены успешно</div></td></tr>');
 						}
 					});
@@ -58,7 +58,7 @@
 						success: function (data) {
 							$('#info-tbl').remove();
 							dataLoc = $('#ipLocation').val();
-							drawTable('ip', '', '', dataLoc);
+							drawTable('documents/ip', '', '', dataLoc,'','');
 							$('.lastrow-tbl').before('<tr id="info-tbl"><td colspan="2"><div style="background: #090;color: #fff;padding: 5px;-webkit-border-radius: 4px;-moz-border-radius: 4px;border-radius: 4px;margin: 5px 0 0 0;margin-top: 7px;width:311px;">Изменения внесены успешно</div></td></tr>');
 						}
 					});

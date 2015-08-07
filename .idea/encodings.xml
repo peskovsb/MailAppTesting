@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/ajax/inventarization/ajax/form/ajax_submit.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ajax/inventarization/ajax/form/create/buid_form_create.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ajax/inventarization/ajax/form/create/view_tpl.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ajax/inventarization/ajax/form/instruction.txt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ajax/inventarization/show.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/database_modify/create_dev_tables.php" charset="UTF-8" />
+  </component>
+</project>
